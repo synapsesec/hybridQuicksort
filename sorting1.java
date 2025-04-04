@@ -6,15 +6,26 @@ import java.util.concurrent.ThreadLocalRandom;
 class Main {   
 
 
-    public static int partition(int array[],int leftmostindex, int rightmostindex) {
-        int left = -1;
-        int pivotIndex = (array.length) - 1;
-        
-        return pivotIndex;
+    public static int partition(int array[],int low, int high) {
+        int pivot = array[high];
+        int index = low - 1; // this points to the index of the next value to be added if it is <= pivot 
+
+        for (int j = low; j < high; j++) {    // iterates through each value in array
+            if (array[j] < pivot) {
+                index++; // increases value of i
+
+                int temp = array[index];   // swapping element at index with element at j
+                array[index] = array[j];
+                array[j] = temp;
+
+            }
+        }     // for loop and if statement closed
+
+
     }
 
-    public static void quickSort(int[] array, int start, int end){
-        if (end <= start) return; //base case
+    public static void quickSort(int[] array, int low, int high){
+        if (high <= low) return; //base case
     }
     public static void main(String[] args) {
     //     ArrayList<Integer> day1 = new ArrayList<>();
