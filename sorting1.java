@@ -19,7 +19,7 @@ class Main {
 
             }
         }     // for loop and if statement closed
-        // Swap the pivot element with the element at index i + 1
+        // Swap the pivot element with the element at index + 1
         int temp = array.get(index + 1);
         array.set(index + 1, array.get(high));
         array.set(high, temp);
@@ -39,16 +39,26 @@ class Main {
 
 
     public static void main(String[] args) {
-    //     ArrayList<Integer> day1 = new ArrayList<>();
+        ArrayList<Integer> day1 = new ArrayList<>();
     //     ArrayList<Integer> day2 = new ArrayList<>();
     //     ArrayList<Integer> day3 = new ArrayList<>();
     //     ArrayList<Integer> day4 = new ArrayList<>();
     //     ArrayList<Integer> day5 = new ArrayList<>(); // creating each array
     //     ArrayList<Integer> day6 = new ArrayList<>(); 
-        ArrayList<Integer> day7 = new ArrayList<>();
-    //     for (int i=0; i != 1000; i++) { // im assuming that they want items to be random between 1 and X where X=the num of items generated on that day
-    //         day1.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
-    //     }
+    //     ArrayList<Integer> day7 = new ArrayList<>();
+        ArrayList<Integer> sorted = new ArrayList<>();   
+        for (int incrementor1=0; incrementor1 != 1000; incrementor1++) {
+            sorted.add(incrementor1); //creates sorted list
+        }     
+
+        ArrayList<Integer> reverse = new ArrayList<>();   
+        for (int incrementor1=1000; incrementor1 != 0; incrementor1--) {
+            reverse.add(incrementor1); //creates sorted list
+        }    
+
+        for (int i=0; i != 1000; i++) { // im assuming that they want items to be random between 1 and X where X=the num of items generated on that day
+            day1.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
+         }
     //     for (int i=0; i != 5000; i++) {
     //         day2.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
     //     }
@@ -64,16 +74,24 @@ class Main {
     //     for (int i=0; i != 100000; i++) {
     //         day6.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
     // }       //adding random numbers to each days array
-        for (int i=0; i != 500000; i++) {
-            day7.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
-        }
-        quickSort(day7, 0, (day7.size() - 1));
-        System.out.println(day7); 
+    //     for (int i=0; i != 500000; i++) {
+    //         day7.add(ThreadLocalRandom.current().nextInt(1000, 500000 + 1));
+        // }
+
+        // CREATING ARRAYS TO TEST ON 
+        // day1 = 1000 random numbers
+        
 
 
 
-      
+        long startTime = System.currentTimeMillis();
+        quickSort(day1, 0, (day1.size() - 1));
+        quickSort(sorted, 0, (sorted.size() - 1));
+        quickSort(reverse, 0, (reverse.size() - 1));
+        long endTime = System.currentTimeMillis();
+        long timeDifference = endTime - startTime;
+        System.out.print("time difference: ");
+        System.out.println(timeDifference + " milliseconds");
     }
-
 }
 
