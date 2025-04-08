@@ -49,7 +49,8 @@ class Main {
         ArrayList<Integer> sorted = new ArrayList<>();   
         for (int incrementor1=0; incrementor1 != 1000; incrementor1++) {
             sorted.add(incrementor1); //creates sorted list
-        }     
+        } 
+        
 
         ArrayList<Integer> reverse = new ArrayList<>();   
         for (int incrementor1=1000; incrementor1 != 0; incrementor1--) {
@@ -83,15 +84,23 @@ class Main {
         
 
 
+        ArrayList<Long> timelist = new ArrayList<>();
+        for (int i=0; i < 120; i++) {
+            long startTime = System.currentTimeMillis();
+            quickSort(day1, 0, (day1.size() - 1));
+            quickSort(sorted, 0, (sorted.size() - 1));
+            quickSort(reverse, 0, (reverse.size() - 1));
+            long endTime = System.currentTimeMillis();
+            long timeDifference = endTime - startTime;
+            timelist.add(timeDifference);
+        }
 
-        long startTime = System.currentTimeMillis();
-        quickSort(day1, 0, (day1.size() - 1));
-        quickSort(sorted, 0, (sorted.size() - 1));
-        quickSort(reverse, 0, (reverse.size() - 1));
-        long endTime = System.currentTimeMillis();
-        long timeDifference = endTime - startTime;
-        System.out.print("time difference: ");
-        System.out.println(timeDifference + " milliseconds");
+        long sum = 0;
+        for (Long number : timelist) {
+            sum += number;
+        }
+        System.out.println("average: " + (sum/timelist.size()) + " milliseconds");
+    
     }
 }
 
