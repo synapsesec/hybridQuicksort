@@ -5,6 +5,28 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Main {   
 
+    public static void selectionSort(ArrayList<Integer> array) {
+
+        int arraySize = array.size();
+        for (int iter = 0; iter < arraySize-1; iter++) { // outer loop 
+            int min = iter; //assume current element = min
+            for (int i = iter+1; i < arraySize; i++) { // inner loop to find min
+
+                if (array.get(i) < array.get(min)) { // compare current to min
+                    min = i;
+
+            }
+
+            }
+
+            int temp = array.get(iter);
+            array.set(iter,array.get(min)); // swap items if new min found
+            array.set(min, temp);
+        }
+
+        
+    }
+
     public static int partition(ArrayList<Integer> array ,int low, int high) {
         int pivot = array.get(high);
         int index = low - 1; // this points to the index of the next value to be added if it is <= pivot 
