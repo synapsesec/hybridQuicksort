@@ -83,23 +83,16 @@ class Main {
         // day1 = 1000 random numbers
         
 
+        long startTime = System.currentTimeMillis();
+        quickSort(day1, 0, (day1.size() - 1));
+        quickSort(sorted, 0, (sorted.size() - 1));
+        quickSort(reverse, 0, (reverse.size() - 1));
+        long endTime = System.currentTimeMillis();
+        long timeDifference = endTime - startTime;
+        System.out.println(timeDifference + "- Time took in milliseconds");
+        System.out.println("Random list but sorted - \n"+ day1);
+        
 
-        ArrayList<Long> timelist = new ArrayList<>();
-        for (int i=0; i < 120; i++) {
-            long startTime = System.currentTimeMillis();
-            quickSort(day1, 0, (day1.size() - 1));
-            quickSort(sorted, 0, (sorted.size() - 1));
-            quickSort(reverse, 0, (reverse.size() - 1));
-            long endTime = System.currentTimeMillis();
-            long timeDifference = endTime - startTime;
-            timelist.add(timeDifference);
-        }
-
-        long sum = 0;
-        for (Long number : timelist) {
-            sum += number;
-        }
-        System.out.println("average: " + (sum/timelist.size()) + " milliseconds");
     
     }
 }
