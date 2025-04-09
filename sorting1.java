@@ -49,14 +49,22 @@ class Main {
     }
 
 
-    public static void quickSort(ArrayList<Integer> array, int low, int high){
+    public static void quickSort(ArrayList<Integer> array, int low, int high, int ogsize){
         if (high <= low) return; //base case
-    
-        // Partition the array and get the pivot index
-        int pivot = partition(array, low, high);
-        // Recursively sort the sub-arrays
-        quickSort(array, low, pivot - 1);  // Left sub-array
-        quickSort(array, pivot + 1, high); // Right sub-array
+        int size = (high - low)+1;
+        if (ogsize/size <= 10) { // if current size is one tenth of originalsize
+            selectionSort(array); // use selection sort instead of quicksort
+        }
+        else {
+
+            // Partition the array and get the pivot index
+            int pivot = partition(array, low, high);
+            // Recursively sort the sub-arrays
+            quickSort(array, low, pivot - 1, array.size());  // Left sub-array
+            quickSort(array, pivot + 1, high, array.size()); // Right sub-array
+
+        }
+        
     }
 
 
@@ -106,9 +114,9 @@ class Main {
         
 
         long startTime = System.currentTimeMillis();
-        quickSort(day1, 0, (day1.size() - 1));
-        quickSort(sorted, 0, (sorted.size() - 1));
-        quickSort(reverse, 0, (reverse.size() - 1));
+        quickSort(day1, 0, (day1.size() - 1), day1.size());
+        quickSort(sorted, 0, (sorted.size() - 1), sorted.size());
+        quickSort(reverse, 0, (reverse.size() - 1),reverse.size());
         long endTime = System.currentTimeMillis();
         long timeDifference = endTime - startTime;
         System.out.println(timeDifference + "- Time took in milliseconds");
